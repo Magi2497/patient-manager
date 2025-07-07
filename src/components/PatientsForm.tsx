@@ -1,16 +1,16 @@
 import { useForm } from 'react-hook-form'
 import ErrorMessage from './ErrorMessage'
-
+import type { DraftPatient } from '../types'
 export default function PatientForm() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<DraftPatient>({
     mode: 'onChange',
   })
-  const registerPatients = () => {
-    console.log('nuevo paciente')
+  const registerPatients = (data: DraftPatient) => {
+    console.log(data)
   }
   return (
     <div className="md:w-1/2 lg:w-2/5 mx-5">
@@ -37,20 +37,9 @@ export default function PatientForm() {
             placeholder="Patient's Name"
             {...register('name', {
               required: 'The name of the patient is required',
-              maxLength: {
-                value: 15,
-                message: '15 characters maximum',
-              },
             })}
           />
-
-          {['name', 'maxLength'].map(field =>
-            errors[field] ? (
-              <ErrorMessage key={field}>
-                {errors[field]?.message?.toString()}
-              </ErrorMessage>
-            ) : null,
-          )}
+          {errors.name && <ErrorMessage>{errors.name?.message}</ErrorMessage>}
         </div>
 
         <div className="mb-5">
@@ -67,9 +56,7 @@ export default function PatientForm() {
             })}
           />
 
-          {errors.owner && (
-            <ErrorMessage>{errors.owner?.message?.toString()}</ErrorMessage>
-          )}
+          {errors.owner && <ErrorMessage>{errors.owner?.message}</ErrorMessage>}
         </div>
 
         <div className="mb-5">
@@ -90,9 +77,7 @@ export default function PatientForm() {
             })}
           />
 
-          {errors.email && (
-            <ErrorMessage>{errors.email?.message?.toString()}</ErrorMessage>
-          )}
+          {errors.email && <ErrorMessage>{errors.email?.message}</ErrorMessage>}
         </div>
 
         <div className="mb-5">
@@ -108,9 +93,7 @@ export default function PatientForm() {
             })}
           />
 
-          {errors.date && (
-            <ErrorMessage>{errors.date?.message?.toString()}</ErrorMessage>
-          )}
+          {errors.date && <ErrorMessage>{errors.date?.message}</ErrorMessage>}
         </div>
 
         <div className="mb-5">
@@ -127,7 +110,7 @@ export default function PatientForm() {
           />
 
           {errors.symptoms && (
-            <ErrorMessage>{errors.symptoms?.message?.toString()}</ErrorMessage>
+            <ErrorMessage>{errors.symptoms?.message}</ErrorMessage>
           )}
         </div>
 
