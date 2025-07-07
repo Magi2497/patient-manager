@@ -1,11 +1,11 @@
 export default function PatientForm() {
   return (
     <div className="md:w-1/2 lg:w-2/5 mx-5">
-      <h2 className="font-black text-3xl text-center">Seguimiento Pacientes</h2>
+      <h2 className="font-black text-3xl text-center">Patient Tracking</h2>
 
       <p className="text-lg mt-5 text-center mb-10">
-        Añade Pacientes y {''}
-        <span className="text-indigo-600 font-bold">Administralos</span>
+        Add patients and {''}
+        <span className="text-indigo-600 font-bold">Manage them</span>
       </p>
 
       <form
@@ -14,25 +14,25 @@ export default function PatientForm() {
       >
         <div className="mb-5">
           <label htmlFor="name" className="text-sm uppercase font-bold">
-            Paciente
+            Patient
           </label>
           <input
             id="name"
-            className="w-full p-3  border border-gray-100"
+            className="w-full p-3 border border-gray-100"
             type="text"
-            placeholder="Nombre del Paciente"
+            placeholder="Patient's Name"
           />
         </div>
 
         <div className="mb-5">
-          <label htmlFor="caretaker" className="text-sm uppercase font-bold">
-            Propietario
+          <label htmlFor="owner" className="text-sm uppercase font-bold">
+            Owner
           </label>
           <input
-            id="caretaker"
-            className="w-full p-3  border border-gray-100"
+            id="owner"
+            className="w-full p-3 border border-gray-100"
             type="text"
-            placeholder="Nombre del Propietario"
+            placeholder="Owner's Name"
           />
         </div>
 
@@ -42,38 +42,38 @@ export default function PatientForm() {
           </label>
           <input
             id="email"
-            className="w-full p-3  border border-gray-100"
+            className="w-full p-3 border border-gray-100"
             type="email"
-            placeholder="Email de Registro"
+            placeholder="Registration Email"
           />
         </div>
 
         <div className="mb-5">
           <label htmlFor="date" className="text-sm uppercase font-bold">
-            Fecha Alta
+            Admission Date
           </label>
           <input
             id="date"
-            className="w-full p-3  border border-gray-100"
+            className="w-full p-3 border border-gray-100"
             type="date"
           />
         </div>
 
         <div className="mb-5">
           <label htmlFor="symptoms" className="text-sm uppercase font-bold">
-            Síntomas
+            Symptoms
           </label>
           <textarea
             id="symptoms"
-            className="w-full p-3  border border-gray-100"
-            placeholder="Síntomas del paciente"
+            className="w-full p-3 border border-gray-100"
+            placeholder="Patient's Symptoms"
           ></textarea>
         </div>
 
         <input
           type="submit"
           className="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-colors"
-          value="Guardar Paciente"
+          value="Save Patient"
         />
       </form>
     </div>
