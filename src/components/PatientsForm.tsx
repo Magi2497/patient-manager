@@ -1,17 +1,24 @@
 import { useForm } from 'react-hook-form'
+import { usePatientStore } from '../store'
 import ErrorMessage from './ErrorMessage'
 import type { DraftPatient } from '../types'
 export default function PatientForm() {
+  const { addPatient } = usePatientStore()
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<DraftPatient>({
     mode: 'onChange',
   })
+
   const registerPatients = (data: DraftPatient) => {
-    console.log(data)
+    addPatient(data)
+    reset()
   }
+
   return (
     <div className="md:w-1/2 lg:w-2/5 mx-5">
       <h2 className="font-black text-3xl text-center">Patient Tracking</h2>
