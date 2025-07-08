@@ -1,69 +1,34 @@
-# React + TypeScript + Vite
+# 🐾 Patient Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Patient Manager** is a veterinary patient tracking web application. It allows users to register, edit, and delete pet records with details like symptoms, owner's info, and admission date. Built with React, TypeScript, and Tailwind CSS, it's fast, clean, and responsive.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Add, edit, and delete patient records
+- Each patient includes name, owner, email, admission date, and symptoms
+- Real-time updates to the patient list
+- Form validation with user-friendly error messages
+- Responsive design for desktop
+- ✅ Built with **TypeScript** for type safety and maintainability
+- ✅ Global state handled with **Zustand**, a lightweight and scalable state manager
+- ✅ Form handling using **React Hook Form** for efficient validation and controlled inputs
 
-## Expanding the ESLint configuration
+## 🛠️ Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React** – Component-based UI building and dynamic rendering
+- **TypeScript** – Static typing for robust, scalable apps
+- **Tailwind CSS** – Utility-first CSS framework for fast and responsive design
+- **Zustand** – Simplified global state management
+- **Vite** – Lightning-fast dev server and build tool
+- **npm** – Dependency and script management
+- **React Hook Form** – Lightweight form management and validation library for React
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📂 Folder Structure Highlights
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- `src/components/` – Patient form, patient list, individual patient items
+- `src/store/` – Zustand global store
+- `src/types/` – TypeScript interfaces and types
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🔗 Live Demo
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+👉 **[Click here to view the demo](https://patient-manager-2497.netlify.app/)**
