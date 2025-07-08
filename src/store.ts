@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { devtools } from 'zustand/middleware'
+import { devtools, persist } from 'zustand/middleware'
 import { v4 as idGenerator } from 'uuid'
 import type { DraftPatient, Patient } from './types'
 
@@ -18,40 +18,49 @@ const createPatient = (patient: DraftPatient): Patient => {
 }
 
 export const usePatientStore = create<PatientState>()(
-  devtools(set => ({
-    //  List of states
-    patients: [],
-    activeId: '',
-
-    //  function to add patients in the array
-    addPatient: data => {
-      const newPatient = createPatient(data)
-      set(state => ({
-        patients: [...state.patients, newPatient],
-      }))
-    },
-
-    // function to delet pacients
-    deletePatient: id => {
-      set(state => ({
-        patients: state.patients.filter(patient => patient.id !== id),
-      }))
-    },
-
-    // function to get the id of a patient
-    getPatientById: id => {
-      set(() => ({
-        activeId: id,
-      }))
-    },
-
-    updatePatient: data => {
-      set(state => ({
-        patients: state.patients.map(patient =>
-          patient.id === state.activeId ? { id: patient.id, ...data } : patient,
-        ),
+  devtools(
+    persist(
+      set => ({
+        //  List of states
+        patients: [],
         activeId: '',
-      }))
-    },
-  })),
+
+        //  function to add patients in the array
+        addPatient: data => {
+          const newPatient = createPatient(data)
+          set(state => ({
+            patients: [...state.patients, newPatient],
+          }))
+        },
+
+        // function to delet pacients
+        deletePatient: id => {
+          set(state => ({
+            patients: state.patients.filter(patient => patient.id !== id),
+          }))
+        },
+
+        // function to get the id of a patient
+        getPatientById: id => {
+          set(() => ({
+            activeId: id,
+          }))
+        },
+
+        updatePatient: data => {
+          set(state => ({
+            patients: state.patients.map(patient =>
+              patient.id === state.activeId
+                ? { id: patient.id, ...data }
+                : patient,
+            ),
+            activeId: '',
+          }))
+        },
+      }),
+      {
+        name: 'patient-storage',
+      },
+    ),
+  ),
 )
